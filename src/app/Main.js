@@ -40,11 +40,11 @@ class Main extends Component {
     this.setState({
       open: true,
     });
-  }
+  };
   handleChange = (n, o) => {
     this.selectedDate = o;
     console.log(o);
-}
+};
   render() {
     const standardActions = (
       <FlatButton
