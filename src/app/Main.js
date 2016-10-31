@@ -6,7 +6,7 @@ import FlatButton from 'material-ui/FlatButton';
 import DatePicker from 'material-ui/DatePicker';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
+import {Container, Row, Col} from 'react-pure-grid';
 
 const styles = {
   container: {
@@ -31,9 +31,9 @@ class Main extends Component {
   }
 
   handleRequestClose = () => {
-    this.setState({
-      open: false,
-    });
+      this.setState({
+          open: false,
+      });
   }
 
   handleTouchTap = () => {
@@ -47,6 +47,7 @@ class Main extends Component {
 };
   render() {
     const standardActions = (
+
       <FlatButton
         label="Ok"
         primary={true}
@@ -56,22 +57,27 @@ class Main extends Component {
 
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-        <div style={styles.container}>
-          <Dialog
-            open={this.state.open}
-            title="Wybór daty"
-            actions={standardActions}
-            onRequestClose={this.handleRequestClose}
-          >
-          <DatePicker hintText="Kliknij, aby wybrać datę" onChange = {this.handleChange}/>
-          </Dialog>
-          <h1>Super fajny przycisk</h1>
-          <RaisedButton
-            label="Pokaż wybór daty"
-            secondary={true}
-            onTouchTap={this.handleTouchTap}
-          />
-        </div>
+        <Container>
+          <Row>
+            <Col xs={6} md={4} lg={3}><Dialog
+                open={this.state.open}
+                title="Wybór daty"
+                actions={standardActions}
+                onRequestClose={this.handleRequestClose}
+            ><DatePicker hintText="Kliknij, aby wybrać datę" onChange = {this.handleChange}/>
+            </Dialog></Col>
+          </Row>
+          <Row>
+            <Col xsOffset={5} xs={7}>Super fajny przycisk</Col>
+          </Row>
+          <Row>
+            <Col xsOffset={5} xs={7}><RaisedButton
+                label="Pokaż wybór daty"
+                secondary={true}
+                onTouchTap={this.handleTouchTap}
+            /></Col>
+          </Row>
+        </Container>
       </MuiThemeProvider>
     );
   }
